@@ -8,14 +8,14 @@ namespace ProfitRobots.FXTS2LuaExecuter
     public static class ExtensionProfileLoader
     {
         /// <summary>
-        /// 
+        /// Loads extension from file
         /// </summary>
         /// <exception cref="FXTS2ExtensionException"></exception>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <param name="file"></param>
-        /// <param name="path"></param>
+        /// <param name="indicoreRootPath">Path to indicore root</param>
         /// <returns>Valid profile</returns>
-        public static ExtensionProfile Load(string file, string path)
+        public static ExtensionProfile Load(string file, string indicoreRootPath)
         {
             if (!File.Exists(file))
                 throw new ArgumentOutOfRangeException();
@@ -23,8 +23,31 @@ namespace ProfitRobots.FXTS2LuaExecuter
             var code = File.ReadAllText(file);
             var formattedCode = FormatLuaCode(code);
 
-            var core = new Core(path);
+            var core = new Core(indicoreRootPath);
             var strategy = new ExtensionProfile(core, Path.GetFileNameWithoutExtension(file).ToUpper())
+            {
+                Hash = GetHash(formattedCode),
+                Id = GetId(code),
+                Trades = code.Contains("terminal:execute")
+            };
+            strategy.Load(code);
+            strategy.Init();
+            return strategy;
+        }
+
+        /// <summary>
+        /// Loads extension from code
+        /// </summary>
+        /// <exception cref="FXTS2ExtensionException"></exception>
+        /// <param name="code">Code to load</param>
+        /// <param name="indicoreRootPath">Path to indicore root</param>
+        /// <returns>Valid profile</returns>
+        public static ExtensionProfile LoadFromCode(string code, string name, string indicoreRootPath)
+        {
+            var formattedCode = FormatLuaCode(code);
+
+            var core = new Core(indicoreRootPath);
+            var strategy = new ExtensionProfile(core, name.ToUpper())
             {
                 Hash = GetHash(formattedCode),
                 Id = GetId(code),
