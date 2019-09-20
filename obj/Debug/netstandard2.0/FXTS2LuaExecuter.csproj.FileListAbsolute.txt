@@ -1,0 +1,9 @@
+C:\projects\profitrobots\mass-backtester\FXTS2LuaExecuter\obj\Debug\netstandard2.0\FXTS2LuaExecuter.csprojAssemblyReference.cache
+C:\projects\profitrobots\mass-backtester\FXTS2LuaExecuter\obj\Debug\netstandard2.0\FXTS2LuaExecuter.csproj.CoreCompileInputs.cache
+C:\projects\profitrobots\mass-backtester\FXTS2LuaExecuter\obj\Debug\netstandard2.0\FXTS2LuaExecuter.AssemblyInfoInputs.cache
+C:\projects\profitrobots\mass-backtester\FXTS2LuaExecuter\obj\Debug\netstandard2.0\FXTS2LuaExecuter.AssemblyInfo.cs
+C:\projects\profitrobots\mass-backtester\FXTS2LuaExecuter\bin\Debug\netstandard2.0\FXTS2LuaExecuter.deps.json
+C:\projects\profitrobots\mass-backtester\FXTS2LuaExecuter\bin\Debug\netstandard2.0\FXTS2LuaExecuter.dll
+C:\projects\profitrobots\mass-backtester\FXTS2LuaExecuter\bin\Debug\netstandard2.0\FXTS2LuaExecuter.pdb
+C:\projects\profitrobots\mass-backtester\FXTS2LuaExecuter\obj\Debug\netstandard2.0\FXTS2LuaExecuter.dll
+C:\projects\profitrobots\mass-backtester\FXTS2LuaExecuter\obj\Debug\netstandard2.0\FXTS2LuaExecuter.pdb
