@@ -1,10 +1,15 @@
-﻿namespace ProfitRobots.FXTS2LuaExecuter
+﻿using System;
+using System.Collections.Generic;
+
+namespace ProfitRobots.FXTS2LuaExecuter
 {
     public class Profile
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public string Id { get; set; }
+
+        public List<(string id, string value)> Tags { get; private set; } = new List<(string id, string value)>();
 
         public ProfileParameters Parameters => parameters;
 
@@ -52,7 +57,7 @@
         /// <param name="value"></param>
         public void setTag(string id, string value)
         {
-            //ignore
+            Tags.Add((id, value));
         }
 
         /// <summary>
