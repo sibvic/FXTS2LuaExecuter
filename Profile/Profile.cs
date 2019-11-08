@@ -3,8 +3,15 @@ using System.Collections.Generic;
 
 namespace ProfitRobots.FXTS2LuaExecuter
 {
+    public enum ProfileType
+    {
+        Indicator,
+        Strategy,
+        Tool
+    }
     public class Profile
     {
+        public virtual ProfileType ProfileType { get; } = 0;
         public string Name { get; set; }
         public string Description { get; set; }
         public string Id { get; set; }

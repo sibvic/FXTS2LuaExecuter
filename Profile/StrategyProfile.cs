@@ -1,7 +1,8 @@
 ﻿namespace ProfitRobots.FXTS2LuaExecuter
 {
-    class StrategyProfile : Profile
+    public class StrategyProfile : Profile
     {
+        public override ProfileType ProfileType => ProfileType.Strategy;
         #region Lua
         #endregion
     }

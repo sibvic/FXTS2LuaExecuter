@@ -3,6 +3,7 @@
 
     public class ToolProfile : Profile
     {
+        public override ProfileType ProfileType => ProfileType.Tool;
         /// <summary>
         /// Associate a custom icon with the tool
         /// </summary>

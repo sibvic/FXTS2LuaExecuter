@@ -4,6 +4,7 @@ namespace ProfitRobots.FXTS2LuaExecuter
 {
     public class IndicatorProfile : Profile
     {
+        public override ProfileType ProfileType => ProfileType.Indicator;
         #region Lua
         /// <summary>
         /// Gets the type of the required source of the indicator.
