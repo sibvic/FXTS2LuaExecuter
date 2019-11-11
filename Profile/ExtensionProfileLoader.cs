@@ -15,7 +15,7 @@ namespace ProfitRobots.FXTS2LuaExecuter
         /// <param name="file"></param>
         /// <param name="indicoreRootPath">Path to indicore root</param>
         /// <returns>Valid profile</returns>
-        public static ExtensionProfile Load(string file, string indicoreRootPath)
+        public static ExtensionProfile Load(string file, string indicoreRootPath, int? id)
         {
             if (!File.Exists(file))
                 throw new ArgumentOutOfRangeException();
@@ -27,7 +27,7 @@ namespace ProfitRobots.FXTS2LuaExecuter
             var strategy = new ExtensionProfile(core, Path.GetFileNameWithoutExtension(file).ToUpper())
             {
                 Hash = GetHash(formattedCode),
-                Id = GetId(code),
+                Id = id ?? GetId(code),
                 Trades = code.Contains("terminal:execute")
             };
             strategy.Load(code);
