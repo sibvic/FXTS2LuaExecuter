@@ -3,5 +3,6 @@
     public class StringProfileParameter : ProfileParameter
     {
         public string Value { get; set; }
+        public string Default { get; set; }
     }
 }

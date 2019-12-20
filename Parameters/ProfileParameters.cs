@@ -15,7 +15,7 @@ namespace ProfitRobots.FXTS2LuaExecuter
         {
             get
             {
-                var code = string.Join(";", Parameters.OrderBy(p => p.Id).Select(p => p.Id));
+                var code = GetCode();
                 using (var sha512 = System.Security.Cryptography.SHA512.Create())
                 {
                     var data = Encoding.UTF8.GetBytes(code);
@@ -23,6 +23,73 @@ namespace ProfitRobots.FXTS2LuaExecuter
                     return Convert.ToBase64String(hash);
                 }
             }
+        }
+
+        private string GetCode()
+        {
+            var code = new StringBuilder();
+            var first = true;
+            foreach (var param in Parameters)
+            {
+                if (!first)
+                {
+                    code.Append(";");
+                }
+                switch (param)
+                {
+                    case DoubleProfileParameter doubleParam:
+                        code.Append(param.Id);
+                        if (doubleParam.Value % 1 != 0 || doubleParam.Value != doubleParam.Default)
+                        {
+                            code.Append("=" + doubleParam.Value.ToString().Replace(",", "."));
+                        }
+                        break;
+                    case BooleanProfileParameter boolParam:
+                        code.Append(param.Id);
+                        if (boolParam.Value != boolParam.Default)
+                        {
+                            code.Append("=" + boolParam.Value.ToString());
+                        }
+                        break;
+                    case ColorProfileParameter colorParam:
+                        code.Append(param.Id);
+                        if (colorParam.Value != colorParam.Default)
+                        {
+                            code.Append("=" + colorParam.Value.ToString());
+                        }
+                        break;
+                    case DateProfileParameter dateParam:
+                        code.Append(param.Id);
+                        if (dateParam.Value != dateParam.Default)
+                        {
+                            code.Append("=" + dateParam.Value.ToString());
+                        }
+                        break;
+                    case FileProfileParameter fileParam:
+                        code.Append(param.Id);
+                        if (fileParam.Value != fileParam.Default)
+                        {
+                            code.Append("=" + fileParam.Value.ToString());
+                        }
+                        break;
+                    case IntegerProfileParameter integerParam:
+                        code.Append(param.Id);
+                        if (integerParam.Value != integerParam.Default)
+                        {
+                            code.Append("=" + integerParam.Value.ToString());
+                        }
+                        break;
+                    case StringProfileParameter stringParam:
+                        code.Append(param.Id);
+                        if (stringParam.Value != stringParam.Default)
+                        {
+                            code.Append("=" + stringParam.Value.ToString());
+                        }
+                        break;
+                }
+                first = false;
+            }
+            return code.ToString();
         }
 
         /// <summary>
