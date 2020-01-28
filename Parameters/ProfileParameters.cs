@@ -9,6 +9,16 @@ namespace ProfitRobots.FXTS2LuaExecuter
 
     public class ProfileParameters : IEnumerable<ProfileParameter>
     {
+        public ProfileParameters Clone()
+        {
+            var clone = new ProfileParameters();
+            foreach (var parameter in Parameters)
+            {
+                clone.Parameters.Add(parameter.Clone());
+            }
+            return clone;
+        }
+
         public List<ProfileParameter> Parameters { get; private set; } = new List<ProfileParameter>();
 
         public string Hash
